@@ -7,7 +7,7 @@ class robot:
             self.name = str(team_number) #Name of team
             self.ranking = int(ranking) #Ranking in hirearchy - int
             self.cycle_factor = float(cycle_factor) #Cycle speed multiplier - entered as a float
-            self.percent = float(percent) #Percentile sort of thing - entered as a float (lower = better team)
+            self.percent = float(percent) #reverse percentile sort of thing - entered as a float (lower = better team)
             
             #Autoset and calculated traits, these change from year to year
             self.grnd_pu_cap = self.prompt_bool(upper=.5, lower=.3, measure_name="ground pickup capable")
@@ -75,13 +75,13 @@ class robot:
 
         if self.percent <= upper:
             return True
-        elif self.percent >= lower:
+        elif self.percent >= (1-lower):
             return False
         else:
-            print(f"The measure ", measure_name, " needs to be set manually")
+            print(f"The measure " + measure_name + " needs to be set manually")
             answer = False
             while not answer:
-                determine = input(f"Entry requested for this robot for ", measure_name, " enter [Y/N]")
+                determine = input(f"Entry requested for" + self.name + " for " + measure_name + ". Enter [Y/N]: ")
                 if determine.casefold() == "y".casefold():
                     return True
                 elif determine.casefold() == "n".casefold():
