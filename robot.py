@@ -2,9 +2,11 @@ from rich.table import Table
 
 class robot:
     def __init__(self, team_number, ranking, cycle_factor, percent, parameters=None, preset_bool=0):
-        """presetbool = 0: default setting, no presets
-        presetbool = 1: set to true
-        presetbool = 2: set to false
+        """
+        Basic input format: team_number, ranking, cycle_factor, percent
+        preset_bool = 0: default setting, no presets
+        preset_bool = 1: set to true
+        preset_bool = 2: set to false
         """
 
         if parameters == None:
