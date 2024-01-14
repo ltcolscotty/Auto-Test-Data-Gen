@@ -3,6 +3,7 @@ from rich.table import Table
 
 from robot import *
 from helper import *
+from simulation import *
 
 #Settings
 robots_count = 10
@@ -21,6 +22,7 @@ robot(345, 10, .5, 1, preset_bool=1),
 
 ]
 
+
 #main code
 console1 = Console()
 
@@ -34,3 +36,5 @@ for bot in range(robots_count - len(roster)):
     roster.append(new_bot)
 
 console1.print(full_comp_list(roster))
+
+
