@@ -1,8 +1,16 @@
 from rich.table import Table
 
 class robot:
-    def __init__(self, team_number, ranking, cycle_factor, percent, parameters=None):
+    def __init__(self, team_number, ranking, cycle_factor, percent, parameters=None, preset_bool=0):
+        """presetbool = 0: default setting, no presets
+        presetbool = 1: set to true
+        presetbool = 2: set to false
+        """
+
         if parameters == None:
+
+            self.preset_bool = preset_bool
+
             #Default sets
             self.name = str(team_number) #Name of team
             self.ranking = int(ranking) #Ranking in hirearchy - int
@@ -73,9 +81,9 @@ class robot:
         Anything in between will be prompted
         """
 
-        if self.percent <= upper:
+        if self.percent <= upper or self.preset_bool == 1:
             return True
-        elif self.percent >= (1-lower):
+        elif self.percent >= (1-lower) or self.preset_bool == 2:
             return False
         else:
             print(f"The measure " + measure_name + " needs to be set manually")
