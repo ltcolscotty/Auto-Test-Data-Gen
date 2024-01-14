@@ -81,7 +81,7 @@ class robot:
             print(f"The measure " + measure_name + " needs to be set manually")
             answer = False
             while not answer:
-                determine = input(f"Entry requested for" + self.name + " for " + measure_name + ". Enter [Y/N]: ")
+                determine = input(f"Entry requested for " + self.name + " for " + measure_name + ". Enter [Y/N]: ")
                 if determine.casefold() == "y".casefold():
                     return True
                 elif determine.casefold() == "n".casefold():
