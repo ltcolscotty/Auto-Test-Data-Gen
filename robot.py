@@ -83,21 +83,26 @@ class robot:
         Anything in between will be prompted
         """
 
-        if self.percent <= upper or self.preset_bool == 1:
+        if self.percent <= upper:
             return True
-        elif self.percent >= (1-lower) or self.preset_bool == 2:
+        elif self.percent >= (1-lower):
             return False
         else:
-            print(f"The measure " + measure_name + " needs to be set manually")
-            answer = False
-            while not answer:
-                determine = input(f"Entry requested for " + self.name + " for " + measure_name + ". Enter [Y/N]: ")
-                if determine.casefold() == "y".casefold():
-                    return True
-                elif determine.casefold() == "n".casefold():
-                    return False
-                else:
-                    print("Invalid input, try again")
+            if self.preset_bool == 1:
+                return True
+            elif self.preset_bool == 2:
+                return False
+            else:
+                print(f"The measure " + measure_name + " needs to be set manually")
+                answer = False
+                while not answer:
+                    determine = input(f"Entry requested for " + self.name + " for " + measure_name + ". Enter [Y/N]: ")
+                    if determine.casefold() == "y".casefold():
+                        return True
+                    elif determine.casefold() == "n".casefold():
+                        return False
+                    else:
+                        print("Invalid input, try again")
 
 
 
