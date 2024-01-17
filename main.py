@@ -9,16 +9,16 @@ from simulation import *
 robots_count = 10
 roster = [
 
-robot(1234, 1, 2, 0.1, preset_bool=1),
-robot(2345, 2, 1.7, .2, preset_bool=1),
-robot(3456, 3, 1.55, .3, preset_bool=1),
-robot(4567, 4, 1.4, .4, preset_bool=1),
-robot(5678, 5, 1.25, .5, preset_bool=1),
-robot(6789, 6, 1.1, .6, preset_bool=1),
-robot(7890, 7, .95, .7, preset_bool=1),
-robot(123, 8, .80, .8, preset_bool=1),
-robot(234, 9, .65, .9, preset_bool=1),
-robot(345, 10, .5, 1, preset_bool=1),
+robot(1234, 1, 0.1, preset_bool=1),
+robot(2345, 2, .2, preset_bool=1),
+robot(3456, 3, .3, preset_bool=1),
+robot(4567, 4, .4, preset_bool=1),
+robot(5678, 5, .5, preset_bool=1),
+robot(6789, 6, .6, preset_bool=1),
+robot(7890, 7, .7, preset_bool=1),
+robot(123, 8, .8, preset_bool=1),
+robot(234, 9, .9, preset_bool=1),
+robot(345, 10, 1, preset_bool=1),
 
 ]
 

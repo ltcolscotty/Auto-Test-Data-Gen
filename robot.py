@@ -74,7 +74,8 @@ class robot:
 
     def get_table_format(self):
         """returns list with parameters of robot"""
-        tbl_frm = [self.name, self.ranking, self.percent, self.grnd_pu_cap, self.srce_pu_cap, self.amp_cap, self.spkr_cap, self.trap_cap, self.score_rating]
+        tbl_frm = [self.name, self.ranking, self.percent, self.grnd_pu_cap, self.srce_pu_cap, 
+                   self.amp_cap, self.spkr_cap, self.trap_cap, self.score_rating]
         return map(str, tbl_frm)
     
 
