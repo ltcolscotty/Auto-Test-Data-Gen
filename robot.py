@@ -1,7 +1,7 @@
 from rich.table import Table
 
 class robot:
-    def __init__(self, team_number, ranking, cycle_factor, percent, parameters=None, preset_bool=0):
+    def __init__(self, team_number, ranking, percent, parameters=None, preset_bool=0):
         """
         Basic input format: team_number, ranking, cycle_factor, percent
         preset_bool = 0: default setting, no presets
@@ -16,7 +16,6 @@ class robot:
             #Default sets
             self.name = str(team_number) #Name of team
             self.ranking = int(ranking) #Ranking in hirearchy - int
-            self.cycle_factor = float(cycle_factor) #Cycle speed multiplier - entered as a float
             self.percent = float(percent) #reverse percentile sort of thing - entered as a float (lower = better team)
             
             #Autoset and calculated traits, these change from year to year
@@ -24,15 +23,18 @@ class robot:
             self.srce_pu_cap = self.prompt_bool(upper=.6, lower=.1, measure_name="source pickup capable")
             self.amp_cap = self.prompt_bool(upper=.6, lower=.2, measure_name="amp capable")
             self.spkr_cap = self.prompt_bool(upper=.4, lower=.2, measure_name="speaker capable")
+            self.trap_cap = self.prompt_bool(upper=.1, lower=.4, measure_name="trap capable")
+            self.score_rating = self.score_rating_gen()
         else:
             self.name = parameters["name"]
             self.ranking = parameters["ranking"]
-            self.cycle_factor = parameters["cycle_multi"]
             self.percent = parameters["percent"]
             self.grnd_pu_cap = parameters["ground_cap"]
             self.srce_pu_cap = parameters["source_cap"]
             self.amp_cap = parameters["amp_cap"]
             self.spkr_cap = parameters["speaker_cap"]
+            self.trap_cap = parameters["trap_cap"]
+            self.score_rating = parameters["score_rating"]
 
 
     def __str__(self):
@@ -41,7 +43,7 @@ class robot:
 
     def box_print(self):
         """Rich formatting"""
-        columns = ["name", "ranking", "cycle_multi", "percent", "ground_cap", "soource_cap", "amp_cap", "speaker_cap"]
+        columns = ["name", "ranking", "percent", "ground_cap", "source_cap", "amp_cap", "speaker_cap", "trap_cap", "score_rating"]
         row = self.get_table_format()
         prnt_table = Table(title="Robot: " + self.name)
 
@@ -58,12 +60,13 @@ class robot:
         exp_param = {
             "name": self.name,
             "ranking": self.ranking,
-            "cycle_multi": self.cycle_factor,
             "percent": self.percent,
             "ground_cap": self.grnd_pu_cap,
             "source_cap": self.srce_pu_cap,
             "amp_cap": self.amp_cap,
-            "speaker_cap": self.spkr_cap
+            "speaker_cap": self.spkr_cap,
+            "trap_cap": self.trap_cap,
+            "score_rating": self.score_rating
         }
         
         return exp_param
@@ -71,7 +74,7 @@ class robot:
 
     def get_table_format(self):
         """returns list with parameters of robot"""
-        tbl_frm = [self.name, self.ranking, self.cycle_factor, self.percent, self.grnd_pu_cap, self.srce_pu_cap, self.amp_cap, self.spkr_cap]
+        tbl_frm = [self.name, self.ranking, self.percent, self.grnd_pu_cap, self.srce_pu_cap, self.amp_cap, self.spkr_cap, self.trap_cap, self.score_rating]
         return map(str, tbl_frm)
     
 
@@ -103,6 +106,19 @@ class robot:
                         return False
                     else:
                         print("Invalid input, try again")
+
+
+    def score_rating_gen(self):
+        if self.percent < 0.2:
+            return 4
+        elif self.percent < 0.4:
+            return 3
+        elif self.percent < 0.6:
+            return 2
+        elif self.percent < 0.8:
+            return 1
+        else:
+            return 0
 
 
 
