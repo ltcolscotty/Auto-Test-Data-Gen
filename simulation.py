@@ -114,6 +114,7 @@ class simulator:
         if scored > 1 or robot.percent <= .2 or dr > 1:
             left_start = True
 
+        #sim center pickup
         if scored >= 2 and robot.grnd_pu_cap:
             center_pickup = True
 
@@ -121,11 +122,24 @@ class simulator:
 
 
     def tele_sim(self, robot):
-        """[]"""
+        """[amp_periods, speaker_score, amp_score, coopertition, fouls, disable_status]"""
 
 
     def penalty_sim(self, robot):
-        """[]"""
+        """[fouls]"""
+
+        #sim dr
+        dr = self.n_dice_six(3)
+        if robot.percent < .5:
+            fouls = dr - 14
+        else:
+            fouls = dr - 12
+        
+        #filter to prevent negatives
+        if fouls >= 0:
+            return fouls
+        else:
+            return 0
 
 
     def sim_show(self, robot):
