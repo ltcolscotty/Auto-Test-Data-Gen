@@ -10,6 +10,11 @@ eg.
 Simulates ONE match
 """
 
+"""Object structuring
+
+
+"""
+
 
 class simulator:
     def __init__(self, roster, match):
@@ -32,6 +37,7 @@ class simulator:
 
 
     def find_bot(self, target_name):
+        """takes bot name and returns bot object"""
         for bot in self.roster:
             if bot.name == target_name:
                 return bot
@@ -40,7 +46,7 @@ class simulator:
                 
 
     def n_dice_six(n_num):
-        """simulates n number 6 die rolls"""
+        """simulates n number 6 die rolls, returns sum"""
         sum = 0
         for n in range(n_num):
             sum += random.randint(1, 6)
@@ -121,8 +127,29 @@ class simulator:
         return [scored, left_start, center_pickup]
 
 
-    def tele_sim(self, robot):
-        """[amp_periods, speaker_score, amp_score, coopertition, fouls, disable_status]"""
+    def tele_sim_bot(self, robot):
+        """[speaker_score, amp_score, coopertition, fouls, disable_status]"""
+
+
+    def tele_sim_alliance(self, alliance):
+        """[amp_periods]"""
+        coopertition_status = False
+
+
+    def amp_period_count(self, total):
+        """returns period count"""
+        if total == 0:
+            return 0
+        elif total <= 3:
+            return 1
+        elif total <= 6:
+            return 2
+        elif total <= 9:
+            return 3
+        elif total <= 11:
+            return 4
+        else:
+            return 5
 
 
     def penalty_sim(self, robot):
