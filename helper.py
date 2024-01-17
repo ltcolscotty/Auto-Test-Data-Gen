@@ -5,7 +5,7 @@ def full_comp_list(robot_list):
 
     prnt_table = Table(title="Full competition and attribute list")
 
-    columns = ["name", "ranking", "cycle_multi", "percent", "ground_cap", "soource_cap", "amp_cap", "speaker_cap"]
+    columns = ["name", "ranking", "percent", "ground_cap", "source_cap", "amp_cap", "speaker_cap", "trap_cap", "score_rating"]
 
     for column in columns:
         prnt_table.add_column(column)

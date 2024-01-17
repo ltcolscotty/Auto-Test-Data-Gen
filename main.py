@@ -9,16 +9,16 @@ from simulation import *
 robots_count = 10
 roster = [
 
-robot(1234, 1, 2, 0.1, preset_bool=1),
-robot(2345, 2, 1.7, .2, preset_bool=1),
-robot(3456, 3, 1.55, .3, preset_bool=1),
-robot(4567, 4, 1.4, .4, preset_bool=1),
-robot(5678, 5, 1.25, .5, preset_bool=1),
-robot(6789, 6, 1.1, .6, preset_bool=1),
-robot(7890, 7, .95, .7, preset_bool=1),
-robot(123, 8, .80, .8, preset_bool=1),
-robot(234, 9, .65, .9, preset_bool=1),
-robot(345, 10, .5, 1, preset_bool=1),
+robot(1234, 1, 0.1, preset_bool=1),
+robot(2345, 2, .2, preset_bool=1),
+robot(3456, 3, .3, preset_bool=1),
+robot(4567, 4, .4, preset_bool=1),
+robot(5678, 5, .5, preset_bool=1),
+robot(6789, 6, .6, preset_bool=1),
+robot(7890, 7, .7, preset_bool=1),
+robot(123, 8, .8, preset_bool=1),
+robot(234, 9, .9, preset_bool=1),
+robot(345, 10, 1, preset_bool=1),
 
 ]
 
@@ -28,10 +28,9 @@ console1 = Console()
 
 for bot in range(robots_count - len(roster)):
     team_num = int(input(f"Input team number for robot rank " + str(bot + 1) + ": "))
-    new_cycle_multi = round(((3*(robots_count - bot))/(2*robots_count) + .5), 2)
     new_percent = round(((1/robots_count)*bot), 2)
 
-    new_bot = robot(team_num, (bot + 1), new_cycle_multi, new_percent)
+    new_bot = robot(team_num, (bot + 1), new_percent)
     console1.print(new_bot.box_print())
     roster.append(new_bot)
 
