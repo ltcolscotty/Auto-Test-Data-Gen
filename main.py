@@ -28,10 +28,9 @@ console1 = Console()
 
 for bot in range(robots_count - len(roster)):
     team_num = int(input(f"Input team number for robot rank " + str(bot + 1) + ": "))
-    new_cycle_multi = round(((3*(robots_count - bot))/(2*robots_count) + .5), 2)
     new_percent = round(((1/robots_count)*bot), 2)
 
-    new_bot = robot(team_num, (bot + 1), new_cycle_multi, new_percent)
+    new_bot = robot(team_num, (bot + 1), new_percent)
     console1.print(new_bot.box_print())
     roster.append(new_bot)
 
