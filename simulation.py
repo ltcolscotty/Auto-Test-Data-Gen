@@ -3,10 +3,11 @@ from custom_exceptions import *
 import random
 
 """
-input for match schedule should be a list containing 6 teams in order of red1->blue3
+Input for match schedule should be a list containing 6 teams in order of red1->blue3
 eg.
 [1234, 2345, 3456, 456, 567, 678]
 
+Simulates ONE match
 """
 
 
@@ -37,7 +38,6 @@ class simulator:
             else:
                 raise BotNotFound
                 
-
 
     def n_dice_six(n_num):
         """simulates n number 6 die rolls"""
@@ -89,6 +89,35 @@ class simulator:
     def auto_sim(self, robot):
         """[scored, left_start, center_pickup]"""
         scored = 0
+        left_start = False
+        center_pickup = False
+
+        #sim auto scoring
+        dr = self.n_dice_six(1)
+
+        if robot.percent => .8:
+            scored = 0
+        elif robot.percent <= .3 and dr >= 5:
+            scored = 1
+        elif robot.percent <= .3 and dr < 5:
+            scored = 2
+        elif dr >= 5:
+            scored = 2
+        elif dr >= 2:
+            scored = 1
+        else:
+            scored = 0
+
+        
+        # sim left start
+        dr = self.n_dice_six(1)
+        if scored > 1 or robot.percent <= .2 or dr > 1:
+            left_start = True
+
+        if scored >= 2 and robot.grnd_pu_cap:
+            center_pickup = True
+
+        return [scored, left_start, center_pickup]
 
 
     def tele_sim(self, robot):
