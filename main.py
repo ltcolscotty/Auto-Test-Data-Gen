@@ -26,13 +26,13 @@ robot(345, 10, 1, preset_bool=1),
 #main code
 console1 = Console()
 
+#figures out how many spots need to be filled based on preset roster then generates stats for them
 for bot in range(robots_count - len(roster)):
     team_num = int(input(f"Input team number for robot rank " + str(bot + 1) + ": "))
     new_percent = round(((1/robots_count)*bot), 2)
-
     new_bot = robot(team_num, (bot + 1), new_percent)
-    console1.print(new_bot.box_print())
-    roster.append(new_bot)
+    
+    roster.append(new_bot) #add new bot to roster
 
 console1.print(full_comp_list(roster))
 
