@@ -1,4 +1,5 @@
 from robot import *
+from custom_exceptions import *
 import random
 
 """
@@ -14,6 +15,28 @@ class simulator:
         """roster, match_schedule"""
         self.roster = roster
         self.schedule = match
+        self.alliance1, self.alliance2 = self.create_alliances()
+        
+
+    def create_alliances(self):
+        """creates alliances based on the match"""
+        alliance1 = list()
+        alliance2 = list()
+        for n in range(1, 3):
+            alliance1.append(self.find_bot(self.schedule[n]))
+        for n in range (4, 6):
+            alliance2.append(self.find_bot(self.schedule[n]))
+
+        return alliance1, alliance2
+
+
+    def find_bot(self, target_name):
+        for bot in self.roster:
+            if bot.name == target_name:
+                return bot
+            else:
+                raise BotNotFound
+                
 
 
     def n_dice_six(n_num):
@@ -40,10 +63,9 @@ class simulator:
             else:
                 pass
 
-
     
     def defense_sim(self, robot):
-
+        """Simulates defense star rating"""
         dr = self.n_dice_six(1)
 
         if (robot.percent > .75) or (robot.percent < .25):
@@ -68,11 +90,14 @@ class simulator:
         """[scored, left_start, center_pickup]"""
         scored = 0
 
+
     def tele_sim(self, robot):
         """[]"""
 
+
     def penalty_sim(self, robot):
-        """"""
+        """[]"""
+
 
     def sim_show(self, robot):
         """Simulates if the robot showed up at all"""
