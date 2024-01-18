@@ -43,7 +43,15 @@ class robot:
 
     def box_print(self):
         """Rich formatting"""
-        columns = ["name", "ranking", "percent", "ground_cap", "source_cap", "amp_cap", "speaker_cap", "trap_cap", "score_rating"]
+        columns = ["name", 
+                   "ranking", 
+                   "percent", 
+                   "ground_cap", 
+                   "source_cap", 
+                   "amp_cap", 
+                   "speaker_cap", 
+                   "trap_cap", 
+                   "score_rating"]
         row = self.get_table_format()
         prnt_table = Table(title="Robot: " + self.name)
 
@@ -74,8 +82,14 @@ class robot:
 
     def get_table_format(self):
         """returns list with parameters of robot"""
-        tbl_frm = [self.name, self.ranking, self.percent, self.grnd_pu_cap, self.srce_pu_cap, 
-                   self.amp_cap, self.spkr_cap, self.trap_cap, self.score_rating]
+        tbl_frm = [self.name, self.ranking,
+                    self.percent, 
+                    self.grnd_pu_cap,
+                    self.srce_pu_cap, 
+                    self.amp_cap,
+                    self.spkr_cap, 
+                    self.trap_cap,
+                    self.score_rating]
         return map(str, tbl_frm)
     
 
@@ -110,6 +124,7 @@ class robot:
 
 
     def score_rating_gen(self):
+        """Generates score rating for robots based on inverse percentile"""
         if self.percent < 0.2:
             return 4
         elif self.percent < 0.4:
