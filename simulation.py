@@ -26,12 +26,18 @@ class simulator:
 
     def create_alliances(self):
         """creates alliances based on the match"""
-        alliance1 = list()
-        alliance2 = list()
+        alliance1 = {}
+        alliance2 = {}
+
+        alliance1robots = list()
+        alliance2robots = list()
         for n in range(1, 3):
-            alliance1.append(self.find_bot(self.schedule[n]))
+            alliance1robots.append(self.find_bot(self.schedule[n]))
         for n in range (4, 6):
-            alliance2.append(self.find_bot(self.schedule[n]))
+            alliance2robots.append(self.find_bot(self.schedule[n]))
+
+        alliance1["robots"] = alliance1robots
+        alliance2["robots"] = alliance2robots
 
         return alliance1, alliance2
 
@@ -134,6 +140,7 @@ class simulator:
     def tele_sim_alliance(self, alliance):
         """[amp_periods]"""
         coopertition_status = False
+
 
 
     def amp_period_count(self, total):
