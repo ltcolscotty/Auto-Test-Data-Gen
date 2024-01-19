@@ -107,7 +107,7 @@ class simulator:
         #sim auto scoring
         dr = self.n_dice_six(1)
 
-        if robot.percent => .8:
+        if robot.percent >= .8:
             scored = 0
         elif robot.percent <= .3 and dr >= 5:
             scored = 1
@@ -157,6 +157,8 @@ class simulator:
         else:
             return dr/2
 
+
+    
 
 
     def amp_period_count(self, total):
