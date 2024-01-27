@@ -6,19 +6,27 @@ from helper import *
 from simulation import *
 
 #Settings
-robots_count = 10
+robots_count = 16
 roster = [
-
-robot(1234, 1, 0.1, preset_bool=1),
-robot(2345, 2, .2, preset_bool=1),
-robot(3456, 3, .3, preset_bool=1),
-robot(4567, 4, .4, preset_bool=1),
-robot(5678, 5, .5, preset_bool=1),
-robot(6789, 6, .6, preset_bool=1),
-robot(7890, 7, .7, preset_bool=1),
-robot(123, 8, .8, preset_bool=1),
-robot(234, 9, .9, preset_bool=1),
-robot(345, 10, 1, preset_bool=1),
+robot(2345, 1, .1, preset_bool=1),
+robot(3456, 2, .15, preset_bool=1),
+robot(4567, 3, .2, preset_bool=1),
+robot(5678, 4, .25, preset_bool=1),
+robot(6789, 5, .3, preset_bool=1),
+robot(7890, 6, .35, preset_bool=1),
+robot(123, 7, .4, preset_bool=1),
+robot(234, 8, .45, preset_bool=1),
+robot(3451, 9, .5, preset_bool=1),
+robot(3452, 10, .55, preset_bool=1),
+robot(3453, 11, .6, preset_bool=1),
+robot(3454, 12, .65, preset_bool=1),
+robot(3455, 13, .7, preset_bool=1),
+robot(3457, 14, .75, preset_bool=1),
+robot(3458, 15, .8, preset_bool=1),
+robot(3459, 16, .85, preset_bool=1),
+robot(3450, 17, .9, preset_bool=1),
+robot(3444, 18, .95, preset_bool=1),
+robot(3445, 19, 1, preset_bool=1),
 
 ]
 

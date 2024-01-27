@@ -140,13 +140,7 @@ class simulator:
     def tele_sim_alliance(self, alliance):
         """[amp_periods]"""
         coopertition_status = False
-        total_rating = 0
 
-        #get scoring rating
-        for robot in alliance:
-            total_rating += robot.score_rating
-
-        amp_score = (2 * self.amp_period_count(total_rating))
         
 
     def sim_speaker(self, robot):

@@ -24,7 +24,6 @@ class robot:
             self.amp_cap = self.prompt_bool(upper=.6, lower=.2, measure_name="amp capable")
             self.spkr_cap = self.prompt_bool(upper=.4, lower=.2, measure_name="speaker capable")
             self.trap_cap = self.prompt_bool(upper=.1, lower=.4, measure_name="trap capable")
-            self.score_rating = self.score_rating_gen()
         else:
             self.name = parameters["name"]
             self.ranking = parameters["ranking"]
@@ -34,7 +33,6 @@ class robot:
             self.amp_cap = parameters["amp_cap"]
             self.spkr_cap = parameters["speaker_cap"]
             self.trap_cap = parameters["trap_cap"]
-            self.score_rating = parameters["score_rating"]
 
 
     def __str__(self):
@@ -50,8 +48,7 @@ class robot:
                    "source_cap", 
                    "amp_cap", 
                    "speaker_cap", 
-                   "trap_cap", 
-                   "score_rating"]
+                   "trap_cap"]
         row = self.get_table_format()
         prnt_table = Table(title="Robot: " + self.name)
 
@@ -73,8 +70,7 @@ class robot:
             "source_cap": self.srce_pu_cap,
             "amp_cap": self.amp_cap,
             "speaker_cap": self.spkr_cap,
-            "trap_cap": self.trap_cap,
-            "score_rating": self.score_rating
+            "trap_cap": self.trap_cap
         }
         
         return exp_param
@@ -88,8 +84,7 @@ class robot:
                     self.srce_pu_cap, 
                     self.amp_cap,
                     self.spkr_cap, 
-                    self.trap_cap,
-                    self.score_rating]
+                    self.trap_cap]
         return map(str, tbl_frm)
     
 
@@ -121,20 +116,6 @@ class robot:
                         return False
                     else:
                         print("Invalid input, try again")
-
-
-    def score_rating_gen(self):
-        """Generates score rating for robots based on inverse percentile"""
-        if self.percent < 0.2:
-            return 4
-        elif self.percent < 0.4:
-            return 3
-        elif self.percent < 0.6:
-            return 2
-        elif self.percent < 0.8:
-            return 1
-        else:
-            return 0
 
 
 
